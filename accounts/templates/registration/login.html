@@ -26,6 +26,14 @@
 <div class="limiter">
   <div class="container-login100">
     <div class="wrap-login100">
+      {% if form.errors %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Your <strong>username</strong> and <strong>password</strong> did not match
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
       <form class="login100-form validate-form" method="POST" action="{% url 'login' %}">
           {% csrf_token %}
         <span class="login100-form-title p-b-43">
