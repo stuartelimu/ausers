@@ -4,38 +4,20 @@
 
 {% block content %}
 
-<!-- <h1>Login</h1>
-
-{% if form.errors %}
-
-<p>Your username and password did not match</p>
-
-{% endif %}
-
-<div>
-
-  <form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <input type="submit" value="Log-in">
-  </form>
-
-</div> -->
-
 <div class="limiter">
   <div class="container-login100">
     <div class="wrap-login100">
-      {% if form.errors %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          Your <strong>username</strong> and <strong>password</strong> did not match
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endif %}
+      
       <form class="login100-form validate-form" method="POST" action="{% url 'login' %}">
           {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Your <strong>username</strong> and <strong>password</strong> did not match
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %}
         <span class="login100-form-title p-b-43">
           Login to continue
         </span>
@@ -72,7 +54,7 @@
     
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
+          <button type="submit" class="login100-form-btn">
             Login
           </button>
         </div>
